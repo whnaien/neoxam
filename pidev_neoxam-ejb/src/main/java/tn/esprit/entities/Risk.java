@@ -1,23 +1,22 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
+import javax.jms.JMSSessionMode;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "risks")
-public class risks implements Serializable{
-	/**
-	 * 
-	 */
+@Table(name="risks")
+public class Risk implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -50,17 +49,30 @@ public class risks implements Serializable{
 	public void setTotalScore(Float totalScore) {
 		this.totalScore = totalScore;
 	}
+	
 	public type_risk getTypeRisk() {
 		return typeRisk;
 	}
 	public void setTypeRisk(type_risk typeRisk) {
 		this.typeRisk = typeRisk;
 	}
-	/*@ManyToOne
-	@JoinColumn(name= 'risks')
-	indicators ind ;*/
-	
-	
-	
+
+	@OneToMany(mappedBy="risk")
+	private Collection <Indicator> indicators;
+    
+	@ManyToOne
+	private Employee employee;
+	public Collection<Indicator> getIndicators() {
+		return indicators;
+	}
+	public void setIndicators(Collection<Indicator> indicators) {
+		this.indicators = indicators;
+	}
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 	
 }

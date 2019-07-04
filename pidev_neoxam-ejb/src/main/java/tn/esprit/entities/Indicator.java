@@ -8,12 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("indicators")
 
-public class indicators implements Serializable {
+public class Indicator implements Serializable {
 	/**
 	 * 
 	 */
@@ -48,10 +49,13 @@ public class indicators implements Serializable {
 	public void setScore(float score) {
 		this.score = score;
 	}
-	
-	/*@OneToMany
-	@JoinColumn('ind')
-	risks risks;*/
-	
-	
+	 
+     @ManyToOne
+     private Risk risk ;
+	public Risk getRisk() {
+		return risk;
+	}
+	public void setRisk(Risk risk) {
+		this.risk = risk;
+	}
 }

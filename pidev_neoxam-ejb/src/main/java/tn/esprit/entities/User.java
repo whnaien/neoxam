@@ -20,8 +20,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="user_type", 
-discriminatorType = DiscriminatorType.STRING)
+/*@DiscriminatorColumn(name="user_type", 
+discriminatorType = DiscriminatorType.STRING)*/
 public class User implements Serializable {
 
 	

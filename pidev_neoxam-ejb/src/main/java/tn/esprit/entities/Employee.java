@@ -1,12 +1,14 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("employee")
@@ -85,5 +87,14 @@ public class Employee extends User implements Serializable {
 		this.imageUri = imageUri;
 	}
 
-	
+	@OneToMany(mappedBy="employee")
+	private Collection <Risk> risks;
+
+	public Collection<Risk> getRisks() {
+		return risks;
+	}
+
+	public void setRisks(Collection<Risk> risks) {
+		this.risks = risks;
+	}
 }

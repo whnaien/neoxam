@@ -14,7 +14,15 @@ import tn.esprit.entities.User;
 public class EmployeeDaoImp implements EmployeDao {
 
 	@PersistenceContext(unitName = "pidev")
-	EntityManager em;
+	private EntityManager em;
+
+	public EntityManager getEm() {
+		return em;
+	}
+
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 
 	@Override
 	public int addEmployee(Employee employee) {
