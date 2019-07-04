@@ -3,8 +3,7 @@ package tn.esprit.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,9 +18,10 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "user")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="user_type", 
-discriminatorType = DiscriminatorType.STRING)
+@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn(name="user_type", 
+//discriminatorType = DiscriminatorType.STRING)
+//@MappedSuperclass
 public class User implements Serializable {
 
 	
@@ -31,6 +31,10 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "id")
+	private int id;
+	
+	
 	private int cin;
 	
 	private String firstname;
@@ -39,7 +43,7 @@ public class User implements Serializable {
 	private String email;
 	private Date birthDate;
 	private String phone;
-	private String sex;
+	private Sex sex;
 	private String nationality;
 	private String login;
 	private String password;
@@ -87,10 +91,11 @@ public class User implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getSex() {
+
+	public Sex getSex() {
 		return sex;
 	}
-	public void setSex(String sex) {
+	public void setSex(Sex sex) {
 		this.sex = sex;
 	}
 	public String getNationality() {
@@ -111,7 +116,14 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 
+	
 	
 	
 	

@@ -1,7 +1,10 @@
-tn\esprit\entities\Employee.class
-tn\esprit\dao\impl\EmployeeDaoImp.class
-tn\esprit\dao\EmployeDao.class
-tn\esprit\entities\User.class
-tn\esprit\entities\Position.class
-tn\esprit\entities\Department.class
-tn\esprit\entities\Condidate.class
+tn/esprit/entities/type_risk.class
+tn/esprit/entities/Condidate.class
+tn/esprit/entities/indicators.class
+tn/esprit/entities/Employee.class
+tn/esprit/entities/User.class
+tn/esprit/entities/Position.class
+tn/esprit/dao/impl/EmployeeDaoImp.class
+tn/esprit/dao/EmployeDao.class
+tn/esprit/entities/Department.class
+tn/esprit/entities/risks.class

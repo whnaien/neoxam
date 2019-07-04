@@ -1,4 +1,4 @@
-package tn.esprit.dao;
+package tn.esprit.dao.impl;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import tn.esprit.dao.impl.ICandidateCrud;
+import tn.esprit.dao.ICandidateCrud;
 import tn.esprit.entities.Candidate;
 
 

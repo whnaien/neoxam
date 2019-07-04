@@ -1,7 +1,10 @@
-C:\Users\Syrine\workspace\pidev_neoxam\pidev_neoxam-ejb\src\main\java\tn\esprit\dao\EmployeDao.java
-C:\Users\Syrine\workspace\pidev_neoxam\pidev_neoxam-ejb\src\main\java\tn\esprit\entities\Position.java
-C:\Users\Syrine\workspace\pidev_neoxam\pidev_neoxam-ejb\src\main\java\tn\esprit\entities\Department.java
-C:\Users\Syrine\workspace\pidev_neoxam\pidev_neoxam-ejb\src\main\java\tn\esprit\entities\Condidate.java
-C:\Users\Syrine\workspace\pidev_neoxam\pidev_neoxam-ejb\src\main\java\tn\esprit\entities\User.java
-C:\Users\Syrine\workspace\pidev_neoxam\pidev_neoxam-ejb\src\main\java\tn\esprit\dao\impl\EmployeeDaoImp.java
-C:\Users\Syrine\workspace\pidev_neoxam\pidev_neoxam-ejb\src\main\java\tn\esprit\entities\Employee.java
+/Users/marwensabri/workspace/Neoxam/pidev_neoxam-ejb/src/main/java/tn/esprit/entities/Condidate.java
+/Users/marwensabri/workspace/Neoxam/pidev_neoxam-ejb/src/main/java/tn/esprit/dao/EmployeDao.java
+/Users/marwensabri/workspace/Neoxam/pidev_neoxam-ejb/src/main/java/tn/esprit/entities/Employee.java
+/Users/marwensabri/workspace/Neoxam/pidev_neoxam-ejb/src/main/java/tn/esprit/entities/Position.java
+/Users/marwensabri/workspace/Neoxam/pidev_neoxam-ejb/src/main/java/tn/esprit/entities/User.java
+/Users/marwensabri/workspace/Neoxam/pidev_neoxam-ejb/src/main/java/tn/esprit/entities/indicators.java
+/Users/marwensabri/workspace/Neoxam/pidev_neoxam-ejb/src/main/java/tn/esprit/entities/type_risk.java
+/Users/marwensabri/workspace/Neoxam/pidev_neoxam-ejb/src/main/java/tn/esprit/entities/Department.java
+/Users/marwensabri/workspace/Neoxam/pidev_neoxam-ejb/src/main/java/tn/esprit/dao/impl/EmployeeDaoImp.java
+/Users/marwensabri/workspace/Neoxam/pidev_neoxam-ejb/src/main/java/tn/esprit/entities/risks.java

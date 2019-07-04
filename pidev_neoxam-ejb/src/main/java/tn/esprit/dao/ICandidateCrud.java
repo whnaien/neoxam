@@ -1,4 +1,4 @@
-package tn.esprit.dao.impl;
+package tn.esprit.dao;
 
 import java.util.List;
 
