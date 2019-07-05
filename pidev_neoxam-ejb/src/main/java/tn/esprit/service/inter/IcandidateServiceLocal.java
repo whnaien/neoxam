@@ -4,17 +4,17 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import tn.esprit.entities.Candidate;
+import tn.esprit.entities.Candidat;
 
 
 @Local
 public interface IcandidateServiceLocal {
-	public String addCandidate(Candidate candidate);
+	public String addCandidate(Candidat candidate);
 	public void removeCandidate(String Email); 
-	public void updateCandidate (Candidate candidateNewValue);
-	public Candidate findCandidateById(String Email);
-	public List<Candidate> findAllCandidates();
-	public List<Candidate> findCandidatesStringCriteria(String criteria, String value);
-	public List<Candidate> findCandidatesByExp( Integer experience);
+	public void updateCandidate (Candidat candidateNewValue);
+	public Candidat findCandidateById(String Email);
+	public List<Candidat> findAllCandidates();
+	public List<Candidat> findCandidatesStringCriteria(String criteria, String value);
+	public List<Candidat> findCandidatesByExp( Integer experience);
 	
 }

@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 
-public class Candidate extends User implements Serializable {
+public class Candidat extends User implements Serializable {
 
 	   
 
@@ -32,14 +32,14 @@ public class Candidate extends User implements Serializable {
 	@OneToMany(mappedBy="candidat")
 	private Set<ProfessionalExp> professionalExps = new HashSet<ProfessionalExp>();
 	
-	public Candidate(String academicLevel, String university,Integer experience) {
+	public Candidat(String academicLevel, String university,Integer experience) {
 		super();
 
 		this.academicLevel = academicLevel;
 		University = university;
 		Experience = experience;
 	}
-	public Candidate() {
+	public Candidat() {
 		super();
 	}   
 	public String getAcademicLevel() {

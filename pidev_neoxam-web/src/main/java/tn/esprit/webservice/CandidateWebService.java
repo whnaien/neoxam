@@ -14,8 +14,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import tn.esprit.entities.Candidate;
-import tn.esprit.service.CandidateService;
+import tn.esprit.entities.Candidat;
+import tn.esprit.service.CandidatService;
 
 
 
@@ -29,11 +29,11 @@ public class CandidateWebService  {
 		@PersistenceContext(unitName = "pidev")
 		EntityManager em;
 		@EJB
-		CandidateService candidateService;
+		CandidatService candidateService;
 		
 	@POST
     @Consumes(MediaType.APPLICATION_JSON)
-	public Response addCandidate(Candidate candidate) 
+	public Response addCandidate(Candidat candidate) 
 	{
 		if(candidateService.addCandidate(candidate)!="")
 				return Response.status(Status.CREATED).build();
@@ -44,7 +44,7 @@ public class CandidateWebService  {
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response PutRDV( Candidate candidate)
+	public Response PutRDV( Candidat candidate)
 	{
 		
 		candidateService.updateCandidate(candidate);

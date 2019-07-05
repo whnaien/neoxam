@@ -25,7 +25,7 @@ public class Skill implements Serializable {
 
 	@ManyToOne 
 	@JoinColumn(name="FK_CAND_ID")
-	Candidate candidat;
+	Candidat candidat;
 	private static final long serialVersionUID = 1L;
 
 	public Skill() {
@@ -58,10 +58,10 @@ public class Skill implements Serializable {
 	public void setDegree(Degree degree) {
 		this.degree = degree;
 	}
-	public Candidate getCandidat() {
+	public Candidat getCandidat() {
 		return candidat;
 	}
-	public void setCandidat(Candidate candidat) {
+	public void setCandidat(Candidat candidat) {
 		this.candidat = candidat;
 	}
 	

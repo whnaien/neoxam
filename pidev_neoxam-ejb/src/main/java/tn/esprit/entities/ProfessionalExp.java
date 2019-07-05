@@ -24,7 +24,7 @@ public class ProfessionalExp implements Serializable {
 	private String company;
 	@ManyToOne 
 	@JoinColumn(name="FK_CAND_ID")
-	Candidate candidat;
+	Candidat candidat;
 	private static final long serialVersionUID = 1L;
 
 	public ProfessionalExp() {
@@ -58,10 +58,10 @@ public class ProfessionalExp implements Serializable {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	public Candidate getCandidat() {
+	public Candidat getCandidat() {
 		return candidat;
 	}
-	public void setCandidat(Candidate candidat) {
+	public void setCandidat(Candidat candidat) {
 		this.candidat = candidat;
 	}
    

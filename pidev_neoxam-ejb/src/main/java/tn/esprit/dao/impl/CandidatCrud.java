@@ -7,18 +7,18 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import tn.esprit.dao.ICandidateCrud;
-import tn.esprit.entities.Candidate;
+import tn.esprit.dao.ICandidatCrud;
+import tn.esprit.entities.Candidat;
 
 
 
 @Stateless
 @LocalBean
-public class CandidateCrud implements ICandidateCrud {
+public class CandidatCrud implements ICandidatCrud {
 	@PersistenceContext(unitName = "pidev")
 	EntityManager em;
 	@Override
-	public String addCandidate(Candidate candidate) {
+	public String addCandidate(Candidat candidate) {
 		em.persist(candidate);
 		return candidate.getEmail();
 	}
@@ -26,25 +26,25 @@ public class CandidateCrud implements ICandidateCrud {
 
 	@Override
 	public void removeCandidate(String Email) {
-		em.remove(em.find(Candidate.class, Email));		
+		em.remove(em.find(Candidat.class, Email));		
 	}
 
 	@Override
-	public void updateCandidate(Candidate candidateNewValue) {
+	public void updateCandidate(Candidat candidateNewValue) {
 
 		em.merge(candidateNewValue);
 		em.flush();
 	}
 
 	@Override
-	public Candidate findCandidateById(String Email) {
-		Candidate candidate = em.find(Candidate.class, Email);
+	public Candidat findCandidateById(String Email) {
+		Candidat candidate = em.find(Candidat.class, Email);
 		return candidate;
 	}
 
 	@Override
-	public List<Candidate> findAllCandidates() {
-		List<Candidate> candidates = em.createQuery("from Candidate", Candidate.class).getResultList();
+	public List<Candidat> findAllCandidates() {
+		List<Candidat> candidates = em.createQuery("from Candidate", Candidat.class).getResultList();
 		return candidates;
 	}
 
