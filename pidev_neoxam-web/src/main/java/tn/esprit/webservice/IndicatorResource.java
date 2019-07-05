@@ -12,7 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import tn.esprit.dao.indicatorsDao;
+import tn.esprit.dao.IIndicatorCrud;
 
 import tn.esprit.entities.Indicator;
 
@@ -28,7 +28,7 @@ import javax.ws.rs.PathParam;
 public class IndicatorResource {
 
 	@EJB
-	indicatorsDao indicatorsDao;
+	IIndicatorCrud indicatorsDao;
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -41,21 +41,21 @@ public class IndicatorResource {
 	@GET
 	@Path("{code}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getindicatorByCode(@PathParam(value="code") int code) {
+	public Response getindicatorByCode(@PathParam(value="code") String code) {
 		return 
 				Response.ok(indicatorsDao.getIndicatorByCode(code)).build();
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public int addIndicator(Indicator ind){
+	public String addIndicator(Indicator ind){
 			return indicatorsDao.addIndicator(ind);
 	}
 	
 	@DELETE
 	@Path("{code}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String deleteIndicator(@PathParam(value="code") int code) {
+	public String deleteIndicator(@PathParam(value="code") String code) {
 			
 			indicatorsDao.deleteIndicator(code);;
 			return "deleted with success";	

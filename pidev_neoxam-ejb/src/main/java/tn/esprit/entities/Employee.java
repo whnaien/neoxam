@@ -2,7 +2,10 @@ package tn.esprit.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -87,14 +90,17 @@ public class Employee extends User implements Serializable {
 		this.imageUri = imageUri;
 	}
 
-	@OneToMany(mappedBy="employee")
-	private Collection <Risk> risks;
+	 @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy="employee")
+	private Set<Risk> risks = new HashSet<Risk>();
 
-	public Collection<Risk> getRisks() {
+	public Set<Risk> getRisks() {
 		return risks;
 	}
 
-	public void setRisks(Collection<Risk> risks) {
+	public void setRisks(Set<Risk> risks) {
 		this.risks = risks;
 	}
+
+
+	
 }

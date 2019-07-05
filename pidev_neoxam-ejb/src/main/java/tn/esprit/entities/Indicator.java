@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,20 +16,18 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue("indicators")
 
 public class Indicator implements Serializable {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int code;
+	private String code;
 	private String name;
 	private String description;
 	private float score;
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getName() {
@@ -49,9 +48,13 @@ public class Indicator implements Serializable {
 	public void setScore(float score) {
 		this.score = score;
 	}
-	 
-     @ManyToOne
-     private Risk risk ;
+
+
+     @ManyToOne (fetch = FetchType.EAGER)
+     @JoinColumn(name="FK_Risk_ref")
+     Risk risk;
+
+
 	public Risk getRisk() {
 		return risk;
 	}
