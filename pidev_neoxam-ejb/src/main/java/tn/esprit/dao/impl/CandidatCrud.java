@@ -10,42 +10,40 @@ import javax.persistence.PersistenceContext;
 import tn.esprit.dao.ICandidatCrud;
 import tn.esprit.entities.Candidat;
 
-
-
 @Stateless
 @LocalBean
 public class CandidatCrud implements ICandidatCrud {
 	@PersistenceContext(unitName = "pidev")
 	EntityManager em;
 	@Override
-	public String addCandidate(Candidat candidate) {
+	public String addCandidat(Candidat candidate) {
 		em.persist(candidate);
 		return candidate.getEmail();
 	}
 
 
 	@Override
-	public void removeCandidate(String Email) {
+	public void removeCandidat(String Email) {
 		em.remove(em.find(Candidat.class, Email));		
 	}
 
 	@Override
-	public void updateCandidate(Candidat candidateNewValue) {
+	public void updateCandidat(Candidat candidatNewValue) {
 
-		em.merge(candidateNewValue);
+		em.merge(candidatNewValue);
 		em.flush();
 	}
 
 	@Override
-	public Candidat findCandidateById(String Email) {
+	public Candidat findCandidatById(String Email) {
 		Candidat candidate = em.find(Candidat.class, Email);
 		return candidate;
 	}
 
 	@Override
-	public List<Candidat> findAllCandidates() {
-		List<Candidat> candidates = em.createQuery("from Candidate", Candidat.class).getResultList();
-		return candidates;
+	public List<Candidat> findAllCandidats() {
+		List<Candidat> candidats = em.createQuery("from Candidat", Candidat.class).getResultList();
+		return candidats;
 	}
 
 

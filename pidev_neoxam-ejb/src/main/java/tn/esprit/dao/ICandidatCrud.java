@@ -9,9 +9,9 @@ import tn.esprit.entities.Candidat;
 
 
 public interface ICandidatCrud {
-	public String addCandidate(Candidat candidate);
-	public void removeCandidate(String Email); 
-	public void updateCandidate (Candidat candidateNewValue);
-	public Candidat findCandidateById(String Email);
-	public List<Candidat> findAllCandidates();
+	public String addCandidat(Candidat candidat);
+	public void removeCandidat(String Email); 
+	public void updateCandidat (Candidat candidateNewValue);
+	public Candidat findCandidatById(String Email);
+	public List<Candidat> findAllCandidats();
 }

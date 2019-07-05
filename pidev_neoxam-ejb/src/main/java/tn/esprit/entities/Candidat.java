@@ -16,7 +16,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
-
 @XmlRootElement
 
 public class Candidat extends User implements Serializable {
@@ -27,11 +26,13 @@ public class Candidat extends User implements Serializable {
 	private String University;
 	private Integer Experience;
 	private static final long serialVersionUID = 1L;
-	@OneToMany(mappedBy="candidat")
+	
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy="candidat")
 	private Set<Skill> skills = new HashSet<Skill>();
-	@OneToMany(mappedBy="candidat")
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy="candidat")
 	private Set<ProfessionalExp> professionalExps = new HashSet<ProfessionalExp>();
 	
+
 	public Candidat(String academicLevel, String university,Integer experience) {
 		super();
 
@@ -77,9 +78,10 @@ public class Candidat extends User implements Serializable {
 	public void setProfessionalExps(Set<ProfessionalExp> professionalExps) {
 		this.professionalExps = professionalExps;
 	}
+	
 	@Override
 	public String toString() {
-		return "Candidate [academicLevel="
+		return "Candidat [academicLevel="
 				+ academicLevel + ", University=" + University + ", Experience=" + Experience + "]";
 	}
    

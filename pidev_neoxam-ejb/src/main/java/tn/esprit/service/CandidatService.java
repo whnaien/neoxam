@@ -11,14 +11,14 @@ import javax.persistence.TypedQuery;
 
 import tn.esprit.dao.impl.CandidatCrud;
 import tn.esprit.entities.Candidat;
-import tn.esprit.service.inter.IcandidateServiceLocal;
-import tn.esprit.service.inter.IcandidateServiceRemote;
+import tn.esprit.service.inter.IcandidatServiceLocal;
+import tn.esprit.service.inter.IcandidatServiceRemote;
 
 
 
 @Stateless
 @LocalBean
-public class CandidatService implements IcandidateServiceLocal,IcandidateServiceRemote  {
+public class CandidatService implements IcandidatServiceLocal,IcandidatServiceRemote  {
 	
 		@PersistenceContext(unitName = "pidev")
 		EntityManager em;
@@ -27,47 +27,47 @@ public class CandidatService implements IcandidateServiceLocal,IcandidateService
 		
 
 	@Override
-	public String addCandidate(Candidat candidate) {
-		return candCrud.addCandidate(candidate);
+	public String addCandidat(Candidat candidate) {
+		return candCrud.addCandidat(candidate);
 			
 	}
 
 	@Override
-	public void removeCandidate(String Email) {
-		candCrud.removeCandidate(Email);
+	public void removeCandidat(String Email) {
+		candCrud.removeCandidat(Email);
 		
 	}
 
 	@Override
-	public void updateCandidate(Candidat candidateNewValue) {
+	public void updateCandidat(Candidat candidateNewValue) {
 
-		candCrud.updateCandidate(candidateNewValue);
+		candCrud.updateCandidat(candidateNewValue);
 	}
 
 	@Override
-	public Candidat findCandidateById(String Email) {
+	public Candidat findCandidatById(String Email) {
 		// TODO Auto-generated method stub
-		return candCrud.findCandidateById(Email);
+		return candCrud.findCandidatById(Email);
 	}
 
 	@Override
-	public List<Candidat> findAllCandidates() {
+	public List<Candidat> findAllCandidats() {
 		// TODO Auto-generated method stub
-		return candCrud.findAllCandidates();
+		return candCrud.findAllCandidats();
 	}
 
 	@Override
-	public List<Candidat> findCandidatesStringCriteria(String criteria, String value) {
+	public List<Candidat> findCandidatsStringCriteria(String criteria, String value) {
 		TypedQuery<Candidat> query = 
-				em.createQuery("SELECT c FROM Candidate c WHERE "+ "c."+criteria+"=:value", Candidat.class); 
+				em.createQuery("SELECT c FROM Candidat c WHERE "+ "c."+criteria+"=:value", Candidat.class); 
 				query.setParameter("value", value); 
 		return query.getResultList();
 	}
 
 	@Override
-	public List<Candidat> findCandidatesByExp(Integer experience) {
+	public List<Candidat> findCandidatsByExp(Integer experience) {
 		TypedQuery<Candidat> query = 
-				em.createQuery("SELECT c FROM Candidate c WHERE c.Experience=:experience", Candidat.class); 
+				em.createQuery("SELECT c FROM Candidat c WHERE c.Experience=:experience", Candidat.class); 
 				query.setParameter("experience", experience); 
 		return query.getResultList();
 	}

@@ -23,9 +23,10 @@ public class Skill implements Serializable {
 	private Integer years;
 	private Degree degree;
 
-	@ManyToOne 
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="FK_CAND_ID")
 	Candidat candidat;
+	
 	private static final long serialVersionUID = 1L;
 
 	public Skill() {
@@ -58,6 +59,7 @@ public class Skill implements Serializable {
 	public void setDegree(Degree degree) {
 		this.degree = degree;
 	}
+	
 	public Candidat getCandidat() {
 		return candidat;
 	}

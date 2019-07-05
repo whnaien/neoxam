@@ -22,9 +22,11 @@ public class ProfessionalExp implements Serializable {
 	private String discription;
 	private Integer years;
 	private String company;
-	@ManyToOne 
+	
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name="FK_CAND_ID")
 	Candidat candidat;
+	
 	private static final long serialVersionUID = 1L;
 
 	public ProfessionalExp() {
@@ -58,11 +60,12 @@ public class ProfessionalExp implements Serializable {
 	public void setCompany(String company) {
 		this.company = company;
 	}
+	
 	public Candidat getCandidat() {
 		return candidat;
 	}
 	public void setCandidat(Candidat candidat) {
 		this.candidat = candidat;
 	}
-   
+  
 }
