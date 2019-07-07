@@ -15,30 +15,30 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import tn.esprit.entities.Position;
-import tn.esprit.services.impl.PositionServiceImpl;
+import tn.esprit.entities.Product;
+import tn.esprit.services.impl.ProductServiceImpl;
 
-@Path("positions")
+@Path("products")
 @LocalBean
 @Stateless
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class PositionResource {
-	
+public class ProductResource {
+
 	@EJB
-	PositionServiceImpl positionServiceImpl;
+	ProductServiceImpl productServiceImpl;
 
 	
 	@GET
-    public List<Position> getAllPositions() {
-        return positionServiceImpl.allPositions();
+    public List<Product> getAllProducts() {
+        return productServiceImpl.allProducts();
     }
  
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Position addPosition(Position position) {
-        return positionServiceImpl.savePosition(position);
+    public Product addProduct(Product product) {
+        return productServiceImpl.saveProduct(product);
  
     }
  
@@ -46,24 +46,22 @@ public class PositionResource {
     @Path("/{sId}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Position updatePosition(@PathParam("sId") int id, Position position) throws Exception {
-        position.setId(id);
-        return positionServiceImpl.updatePosition(position);
+    public Product updateProduct(@PathParam("sId") int id, Product product) throws Exception {
+        product.setId(id);
+        return productServiceImpl.updateProduct(product);
     }
  
     @DELETE
     @Path("/{sId}")
-    public void deletePosition(@PathParam("sId") int id) throws Exception {
-    	positionServiceImpl.deletePosition(id);
+    public void deleteProduct(@PathParam("sId") int id) throws Exception {
+    	productServiceImpl.deleteProduct(id);
     }
  
     //http://localhost:8080/pidev_neoxam-web/rest/employees/2365
     @GET
     @Path("/{sId}")
-    public Position getPosition(@PathParam("sId") int id) {
-        return positionServiceImpl.singlePosition(id);
+    public Product getProduct(@PathParam("sId") int id) {
+        return productServiceImpl.singleProduct(id);
     }
-    
-
 
 }

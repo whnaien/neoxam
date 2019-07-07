@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 
 import tn.esprit.dao.impl.EmployeeDaoImp;
 import tn.esprit.entities.Employee;
+import tn.esprit.entities.Project;
 import tn.esprit.entities.User;
 import tn.esprit.services.EmployeeService;
 
@@ -54,5 +55,37 @@ public class EmployeeServiceImpl implements EmployeeService{
 		employeeDaoImp.deleteUser(cin);
 		
 	}
+
+	@Override
+	public List<Employee> getEmployeesByResponsable(Employee responsable) {
+		return employeeDaoImp.getEmployeesByResponsable(responsable);
+		
+	}
+
+	@Override
+	public List<Employee> getEmployeesByProject(Project project) {
+		// TODO Auto-generated method stub
+		return employeeDaoImp.getEmployeesByProject(project);
+	}
+
+	@Override
+	public void assignProjectToEmployee(Employee employee, int projectId) {
+		employeeDaoImp.assignProjectToEmployee(employee, projectId);
+		
+	}
+
+	@Override
+	public void assignResponsableToEmployee(Employee employee, int responsable_id) {
+		employeeDaoImp.assignResponsableToEmployee(employee, responsable_id);
+		
+	}
+
+	@Override
+	public Employee searchForEmployee(String criteria) {
+		// TODO Auto-generated method stub
+		return employeeDaoImp.searchForEmployee(criteria);
+	}
+	
+	
 
 }

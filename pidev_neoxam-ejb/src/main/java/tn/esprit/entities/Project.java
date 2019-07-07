@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,8 +30,7 @@ public class Project implements Serializable {
 	@ManyToOne
 	private Product product;
 	
-	
-	
+
     @Enumerated(EnumType.STRING)
 	private Priority priority;
 	
