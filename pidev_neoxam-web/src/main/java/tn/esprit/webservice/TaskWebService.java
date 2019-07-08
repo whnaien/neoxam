@@ -25,37 +25,50 @@ import tn.esprit.service.TaskService;
 
 
 
-@Path("project")
+@Path("task")
 @Stateless
 public class TaskWebService  {
 	
 
 		EntityManager em;
 		@EJB
-		TaskService projectService;
+		TaskService taskService;
 		
 	@POST
     @Consumes(MediaType.APPLICATION_JSON)
 
-	public Response addTask(Task project,@QueryParam ("idProject")int idProject,@QueryParam ("idEmployee")int idEmployee) 
+	public Response addTask(Task task,@QueryParam ("idProject")int idProject,@QueryParam ("idEmployee")int idEmployee) 
 	{
-		
+		if (idProject!=0) {
 		try {
-			projectService.addTask(project,idProject,idEmployee);
+			taskService.addTask(task,idProject);
 			return Response.status(Status.CREATED).build();
 			
 		} catch (Exception e) {
 			return Response.status(Status.NOT_ACCEPTABLE).build();
 
 		}
+		}
+		else if (idEmployee!=0)
+		{
+			try {
+				taskService.affectEmployeeToTask(task.getId(), idEmployee);
+				return Response.status(Status.CREATED).build();
+				
+			} catch (Exception e) {
+				return Response.status(Status.NOT_ACCEPTABLE).build();
+
+			}
+		}
+		 return Response.status(Status.NOT_ACCEPTABLE).build();
 	}
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateTask( Task project)
+	public Response updateTask( Task task)
 	{
 		try {
-			projectService.updateTask(project);
+			taskService.updateTask(task);
 			return  Response.status(Status.OK).build();
 
 		} catch (Exception e) {
@@ -69,19 +82,19 @@ public class TaskWebService  {
 	@Produces(MediaType.APPLICATION_JSON)
 		public Response getAllTask(@PathParam(value="id")int id) {
 		if (id == 0)
-		return  Response.status(Status.OK).entity(projectService.findAllTasks()).build();
+		return  Response.status(Status.OK).entity(taskService.findAllTasks()).build();
 		else
-		return  Response.status(Status.OK).entity(projectService.findTaskById(id)).build();
+		return  Response.status(Status.OK).entity(taskService.findTaskById(id)).build();
 
 		
 		}
 
 	@DELETE
 	@Path("{id}")
-	public Response DeleteCoach(@PathParam(value="id")int id)
+	public Response DeleteTask(@PathParam(value="id")int id)
 	{
 		try {
-			projectService.removeTask(id);
+			taskService.removeTask(id);
 			return  Response.status(Status.OK).build();
 
 		} catch (Exception e) {

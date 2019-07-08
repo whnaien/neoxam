@@ -30,12 +30,15 @@ public class TaskService implements ItaskServiceLocal,ItaskServiceRemote  {
 		
 
 	@Override
-	public void addTask(Task task,int idProject , int idEmployee) {
-		 taskCrud.addTask(task,idProject,idEmployee);
+	public void addTask(Task task,int idProject ) {
+		 taskCrud.addTask(task,idProject);
 		
 			
 	}
-
+	public void affectEmployeeToTask(int idTask , int idEmployee)
+	{
+		taskCrud.affectEmployeeToTask(idTask, idEmployee);
+	}
 	@Override
 	public void removeTask(int id) {
 		taskCrud.removeTask(id);

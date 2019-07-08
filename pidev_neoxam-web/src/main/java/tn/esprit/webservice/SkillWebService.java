@@ -80,7 +80,7 @@ public class SkillWebService  {
 
 	@DELETE
 	@Path("{id}")
-	public Response DeleteCoach(@PathParam(value="id")int id)
+	public Response DeleteSkill(@PathParam(value="id")int id)
 	{
 		try {
 			skillService.removeSkill(id);

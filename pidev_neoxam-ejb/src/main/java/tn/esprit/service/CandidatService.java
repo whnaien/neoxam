@@ -1,5 +1,6 @@
 package tn.esprit.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
@@ -38,7 +39,8 @@ public class CandidatService implements IcandidatServiceLocal,IcandidatServiceRe
 		EntityManager em;
 		@EJB
 		CandidatCrud candCrud;
-		
+		 List<String> senderEmailList  = new ArrayList<String>(); ;
+
 
 	@Override
 	public String addCandidat(Candidat candidate) {
@@ -133,15 +135,17 @@ public class CandidatService implements IcandidatServiceLocal,IcandidatServiceRe
     
     // PST part
 	@Override
-	public void extarctPst(String filename) {
-		
+	public List<String> extarctPst(String filename) {
+
 		try {
             PSTFile pstFile = new PSTFile(filename);
             System.out.println(pstFile.getMessageStore().getDisplayName());
-            processFolder(pstFile.getRootFolder());
+             processFolder(pstFile.getRootFolder());
+
         } catch (Exception err) {
             err.printStackTrace();
         }
+		return senderEmailList;
 		
 	}
 	
@@ -149,6 +153,7 @@ public class CandidatService implements IcandidatServiceLocal,IcandidatServiceRe
     public void processFolder(PSTFolder folder)
             throws PSTException, java.io.IOException
     {
+
         depth++;
         // the root folder doesn't have a display name
         if (depth > 0) {
@@ -160,22 +165,24 @@ public class CandidatService implements IcandidatServiceLocal,IcandidatServiceRe
         if (folder.hasSubfolders()) {
             Vector<PSTFolder> childFolders = folder.getSubFolders();
             for (PSTFolder childFolder : childFolders) {
+            	
                 processFolder(childFolder);
             }
         }
-
+        
         // and now the emails for this folder
-        if (folder.getContentCount() > 0) {
+        if (folder.getContentCount() > 0 && folder.getDisplayName().equals("Boîte de réception")) {
             depth++;
             PSTMessage email = (PSTMessage)folder.getNextChild();
             while (email != null) {
                 printDepth();
                 System.out.println("Email: "+email.getSubject());
+                senderEmailList.add(email.getSenderEmailAddress());
                 email = (PSTMessage)folder.getNextChild();
             }
-            depth--;
         }
         depth--;
+
     }
 
     public void printDepth() {

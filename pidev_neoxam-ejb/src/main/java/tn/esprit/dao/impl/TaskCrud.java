@@ -20,17 +20,26 @@ public class TaskCrud implements ITaskCrud {
 	@PersistenceContext(unitName = "pidev")
 	EntityManager em;
 	@Override
-	public void addTask(Task task, int idProject,int idEmployee)
+	public void addTask(Task task, int idProject)
 	{
 		Project project =em.find(Project.class,idProject );
-		Employee employee = em.find(Employee.class, idEmployee );
-		task.setEmployee(employee);
+		//task.setEmployee(employee);
 		task.setProject(project);
 		
 		em.persist(task);
 		
 	}
+public void affectEmployeeToTask(int idTask , int idEmployee)
+{
+	Task task = em.find(Task.class, idTask );
+	Employee employee = em.find(Employee.class, idEmployee );
+	task.setEmployee(employee);
+	em.merge(task);
+	em.flush();
 
+
+
+	}
 
 	@Override
 	public void removeTask(int id) {

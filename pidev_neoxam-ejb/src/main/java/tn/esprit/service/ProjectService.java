@@ -1,5 +1,6 @@
 package tn.esprit.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,6 +15,7 @@ import javax.persistence.PersistenceContext;
 
 import tn.esprit.dao.impl.ProjectCrud;
 import tn.esprit.entities.Project;
+import tn.esprit.entities.Task;
 import tn.esprit.service.inter.IprojectServiceLocal;
 import tn.esprit.service.inter.IprojectServiceRemote;
 
@@ -58,6 +60,17 @@ public class ProjectService implements IprojectServiceLocal,IprojectServiceRemot
 	public List<Project> findAllProjects() {
 		// TODO Auto-generated method stub
 		return projectCrud.findAllProjects();
+	}
+
+	@Override
+	public List<Task> GetTasksByProject(int idProject) {
+		Project project = em.find(Project.class, idProject);
+		List<Task> tasks = new ArrayList<Task>();
+		for (Task task : project.getTasks()) {
+			tasks.add(task);
+		}
+		return tasks;	
+		
 	}
 
 

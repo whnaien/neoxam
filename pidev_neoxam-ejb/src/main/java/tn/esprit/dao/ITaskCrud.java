@@ -10,7 +10,8 @@ import tn.esprit.entities.Task;
 
 
 public interface ITaskCrud {
-	public void addTask(Task task, int idProject,int idEmployee);
+	public void addTask(Task task, int idProject);
+	public void affectEmployeeToTask(int idTask , int idEmployee);
 	public void removeTask(int id); 
 	public void updateTask (Task taskNewValue);
 	public Task findTaskById(int id);

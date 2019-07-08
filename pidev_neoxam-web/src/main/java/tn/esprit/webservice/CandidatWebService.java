@@ -4,6 +4,8 @@ package tn.esprit.webservice;
 
 
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,6 +18,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -99,34 +102,56 @@ public class CandidatWebService  {
 
 	}
 	@POST
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response invitCandidat(@QueryParam(value="email") String email ,@QueryParam(value="PSTpath") String PSTpath)
 	{
-		if (email!="")
+		 GenericEntity<List<String>>  entity = null ;
+
+		if (email!=null)
 		{
 		candidatService.invitCandidat("marwensabri@gmail.com");
 
 		return  Response.status(Status.OK).build();
 		}
-		else if (PSTpath!="")
-			candidatService.extarctPst("/Users/marwensabri/Desktop/PI2019/backup.pst");
-			return  Response.status(Status.OK).build();
+		else if (PSTpath!=null)
+		{
+			//System.out.println(candidatService.extarctPst(PSTpath).get(0));
+			entity = new GenericEntity<List<String>>(candidatService.extarctPst(PSTpath)){}; 
+			return Response.status(Status.OK).entity(entity).build();}
+		//return	candidatService.extarctPst(PSTpath);
+			//return  Response.status(Status.OK).build();
+		//return null;
+		return Response.status(Status.NOT_ACCEPTABLE).build();
 
 	}
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-		public Response getAllCandidat(@QueryParam("email")String email) {
+		public Response getAllCandidat(@QueryParam("email")String email,
+				@QueryParam ("criteria")String criteria,@QueryParam ("value") String value) {
 		if (email!=null)
-			return  Response.status(Status.OK).entity(candidatService.findCandidatById(email)).build();
+			try {
+				return  Response.status(Status.OK).entity(candidatService.findCandidatById(email)).build();
+
+			} catch (Exception e) {
+				return Response.status(Status.NOT_FOUND).build();
+			}
+		else if (email==null && criteria!=null && value!=null )
+			try {
+				return  Response.status(Status.OK).entity(candidatService.findCandidatsStringCriteria(criteria, value)).build();
+
+			} catch (Exception e) {
+				return Response.status(Status.NOT_FOUND).build();
+			}
 		else
+			
 		return  Response.status(Status.OK).entity(candidatService.findAllCandidats()).build();
-		//candidatService.extarctPst("/Users/marwensabri/Desktop/PI2019/backup.pst");
 		
 		}
 
 
 	@DELETE
 	@Path("{id}")
-	public Response DeleteCoach(@PathParam(value="id")String email)
+	public Response DeleteCandidat(@PathParam(value="id")String email)
 	{
 		try {
 			candidatService.removeCandidat(email);

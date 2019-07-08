@@ -17,7 +17,7 @@ public interface IcandidatServiceLocal {
 	public List<Candidat> findCandidatsStringCriteria(String criteria, String value);
 	public List<Candidat> findCandidatsByExp( Integer experience);
 	public void invitCandidat(String receiverEmail);
-	public void extarctPst(String filename);
+	public List<String> extarctPst(String filename);
 	
 	
 }

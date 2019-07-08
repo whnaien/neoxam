@@ -80,7 +80,7 @@ public class ProfessionalExpWebService  {
 
 	@DELETE
 	@Path("{id}")
-	public Response DeleteCoach(@PathParam(value="id")int id)
+	public Response DeleteProfessionalExp(@PathParam(value="id")int id)
 	{
 		try {
 			professionalExpService.removeProfessionalExp(id);
