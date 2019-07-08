@@ -9,6 +9,8 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * Entity implementation class for Entity: Candidate
@@ -27,7 +29,8 @@ public class Candidat extends User implements Serializable {
 	private Integer Experience;
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy="candidat")
+	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy="candidat")
+	@JsonIgnore
 	private Set<Skill> skills = new HashSet<Skill>();
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy="candidat")
 	private Set<ProfessionalExp> professionalExps = new HashSet<ProfessionalExp>();

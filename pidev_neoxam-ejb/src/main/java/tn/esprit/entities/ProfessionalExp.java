@@ -6,6 +6,8 @@ import java.lang.String;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity implementation class for Entity: ProfessionalExp
  *
@@ -23,7 +25,8 @@ public class ProfessionalExp implements Serializable {
 	private Integer years;
 	private String company;
 	
-	@ManyToOne (fetch = FetchType.EAGER)
+	@ManyToOne (fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name="FK_CAND_ID")
 	Candidat candidat;
 	

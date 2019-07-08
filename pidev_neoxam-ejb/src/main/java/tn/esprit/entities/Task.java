@@ -7,6 +7,8 @@ import java.util.Date;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity implementation class for Entity: Task
  *
@@ -24,7 +26,8 @@ public class Task implements Serializable {
 	private Date finished;
 	private TaskStatus status;
 	private Priority priority;
-	@ManyToOne (fetch = FetchType.EAGER)
+	@ManyToOne (fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name="FK_PROJECT_ID")
 	Project project;
 	

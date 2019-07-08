@@ -9,6 +9,8 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity implementation class for Entity: Project
  *
@@ -26,7 +28,8 @@ public class Project implements Serializable {
 	private Date finished;
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy="project")
+	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy="project")
+	@JsonIgnore
 	private Set<Task> tasks = new HashSet<Task>();
 	
 	public Project() {

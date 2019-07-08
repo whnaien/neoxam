@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import tn.esprit.dao.ICandidatCrud;
 import tn.esprit.entities.Candidat;
@@ -16,15 +17,19 @@ public class CandidatCrud implements ICandidatCrud {
 	@PersistenceContext(unitName = "pidev")
 	EntityManager em;
 	@Override
-	public String addCandidat(Candidat candidate) {
-		em.persist(candidate);
-		return candidate.getEmail();
+	public String addCandidat(Candidat candidat) {
+		em.persist(candidat);
+		return candidat.getEmail();
 	}
 
 
 	@Override
 	public void removeCandidat(String Email) {
-		em.remove(em.find(Candidat.class, Email));		
+		TypedQuery<Candidat> query = 
+				em.createQuery("SELECT c FROM Candidat c WHERE email=:value", Candidat.class); 
+				query.setParameter("value", Email); 
+				Candidat candidat=  query.getSingleResult();
+		em.remove(candidat);		
 	}
 
 	@Override
@@ -36,8 +41,11 @@ public class CandidatCrud implements ICandidatCrud {
 
 	@Override
 	public Candidat findCandidatById(String Email) {
-		Candidat candidate = em.find(Candidat.class, Email);
-		return candidate;
+		TypedQuery<Candidat> query = 
+				em.createQuery("SELECT c FROM Candidat c WHERE email=:value", Candidat.class); 
+				query.setParameter("value", Email); 
+				Candidat candidat=  query.getSingleResult();
+				return candidat;
 	}
 
 	@Override
