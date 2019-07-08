@@ -2,13 +2,10 @@ package tn.esprit.dao;
 
 import java.util.List;
 
-import javax.ejb.Local;
-
-import tn.esprit.entities.Employee;
 import tn.esprit.entities.Indicator;
 
 
-@Local
+
 public interface IIndicatorCrud {
 	public String addIndicator(Indicator indicators );
 	public void updateIndicator(Indicator indicators);

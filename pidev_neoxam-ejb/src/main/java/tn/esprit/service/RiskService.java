@@ -56,7 +56,7 @@ public class RiskService implements IRiskServiceLocal, IRiskServiceRemote  {
 
 	@Override
 	public void sendWeeklyReport(Employee employee) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

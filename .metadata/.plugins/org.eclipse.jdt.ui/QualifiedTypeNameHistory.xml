@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.ejb.Stateless"/>
+<fullyQualifiedTypeName name="javax.ejb.LocalBean"/>
+<fullyQualifiedTypeName name="javax.persistence.TypedQuery"/>
+<fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+<fullyQualifiedTypeName name="tn.esprit.dao.impl.RiskCrud"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.Response.Status"/>
+</qualifiedTypeNameHistroy>

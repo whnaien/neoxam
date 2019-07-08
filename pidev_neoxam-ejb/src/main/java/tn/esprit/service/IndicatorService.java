@@ -11,7 +11,7 @@ import javax.persistence.TypedQuery;
 
 import tn.esprit.dao.impl.IndicatorCrud;
 import tn.esprit.entities.Indicator;
-import tn.esprit.entities.Risk;
+
 import tn.esprit.service.inter.IIndicatorServiceLocal;
 import tn.esprit.service.inter.IIndicatorServiceRemote;
 

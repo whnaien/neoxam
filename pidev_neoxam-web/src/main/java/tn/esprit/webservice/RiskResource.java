@@ -1,48 +1,37 @@
 package tn.esprit.webservice;
 
-import java.util.List;
-
-
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.jboss.resteasy.core.QueryParamInjector;
 
 import tn.esprit.entities.Employee;
 import tn.esprit.entities.Risk;
 import tn.esprit.service.RiskService;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.PathParam;
 
 
-@Path("risks")
-@LocalBean
+@Path("risk")
 @Stateless
 public class RiskResource {
-
+	
+	EntityManager em;
 	@EJB
 	RiskService riskService;
 	
-	/*@POST
-    @Consumes(MediaType.APPLICATION_JSON)
-	public Response addRisk(Risk risks) 
-	{
-		if(riskService.addRisk(risks)!="")
-				return Response.status(Status.CREATED).build();
-				else
-				return Response.status(Status.NOT_ACCEPTABLE).build();
-
-	}*/
 	/*@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAll() {
@@ -51,31 +40,42 @@ public class RiskResource {
 		
 	}*/
 	
-	/*@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	 public List<Risk> getRisks_JSON() {
-	        List<Risk> listOfRisks = riskService.addRisk(risks);
-	        return listOfRisks;
-	    }*/
-	
 	
 	@GET
 	@Path("{ref}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getRiskByRef(@PathParam(value="ref") String ref) {
-		return 
-				Response.ok(riskService.getRiskByRef(ref)).build();
+		if (ref == "")
+			return  Response.status(Status.OK).entity(riskService.getAllRisks()).build();
+			else
+			return  Response.status(Status.OK).entity(riskService.getRiskByRef(ref)).build();
+		
+	}
+	@POST
+    @Consumes(MediaType.APPLICATION_JSON)
+	public Response addRisk(Risk risks) 
+	{
+		if(riskService.addRisk(risks)!="")
+				return Response.status(Status.CREATED).build();
+				else
+				return Response.status(Status.NOT_ACCEPTABLE).build();
+
+	}
+	
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateRisk( Risk risk)
+	{
+		try {
+			riskService.updateRisks(risk);
+			return  Response.status(Status.OK).build();
+
+		} catch (Exception e) {
+			return Response.status(Status.NOT_ACCEPTABLE).build();
+		}
+
 	}
 
-	@PUT
-	@Path("/AddRisk")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response AddRisk(Risk r){
-			 riskService.addRisk(r);
-			  String json = "{'message' : 'success'}";
-					    return Response.ok(json, MediaType.APPLICATION_JSON).build();
-	}
 	
 	@DELETE
 	@Path("{ref}")
@@ -84,6 +84,7 @@ public class RiskResource {
 			
 			riskService.deleteRisks(ref);
 			return "deleted with success";	
+						
 	}
 	
 	@POST

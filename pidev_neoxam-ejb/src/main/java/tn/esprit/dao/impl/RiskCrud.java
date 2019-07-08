@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import tn.esprit.dao.IRiskCrud;
 import tn.esprit.entities.Employee;
@@ -39,8 +40,9 @@ public class RiskCrud implements IRiskCrud {
 
 	@Override
 	public List<Risk> getAllRisks() {
-		List<Risk> candidates = em.createQuery("from Risk", Risk.class).getResultList();
-		return candidates;
+		 Query q = em.createQuery("SELECT s FROM Risk s");
+	        return (List<Risk>) q.getResultList();
+		
 	}
 
 	@Override

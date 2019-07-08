@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server default="true" host="localhost" parentServerId="WildFly  9.x1562578416055" version="8.6.0">
+    <admin password="VE9LIyMhVU5fRHJIa3FoUW9FRWcySDdKbVRuU0pxZ3lRRG9zNTlObjZCQjQ1akdoaE1kNUdXcW5SMWlKb0J6d1JNS1RYVDkzcENKM3lvaGU4alhOQ0ZIeWM5VHc=" port="38070" secure="false" user="admin"/>
+    <jdbc jdbcport="31000" jdbcsecure="false" jdbcuser=""/>
+  </server>
+</servers>

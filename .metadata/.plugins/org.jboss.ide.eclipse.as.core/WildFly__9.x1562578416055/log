@@ -1,0 +1,76 @@
+!SESSION 
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2019-07-08 11:34:07.086
+!MESSAGE The server "WildFly  9.x" requires a JDK to run properly. The VM used to launch this server is not recognized as a valid JDK. C:\Program Files\Java\jre1.8.0_60 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 0 2019-07-08 11:34:43.375
+!MESSAGE Module pidev_neoxam-ear on WildFly  9.x not yet fully deployed. Waiting...
+
+!ENTRY org.jboss.ide.eclipse.as.core 2 0 2019-07-08 11:35:03.394
+!MESSAGE Module pidev_neoxam-ear on WildFly  9.x still not ready to be shown in browser. Aborting delay.
+!SESSION 
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2019-07-08 12:03:50.378
+!MESSAGE The server "WildFly  9.x" requires a JDK to run properly. The VM used to launch this server is not recognized as a valid JDK. C:\Program Files\Java\jre1.8.0_60 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2019-07-08 12:03:51.836
+!MESSAGE Server Starting
+!SESSION 
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298244 2019-07-08 12:20:43.847
+!MESSAGE Full publish failed for module pidev_neoxam-ear
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:20:43.847
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ear\target\m2e-wtp\ear-resources\META-INF\MANIFEST.MF
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:20:43.847
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ear\target\m2e-wtp\ear-resources\META-INF\application.xml
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:20:43.847
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ear\target\m2e-wtp\ear-resources\META-INF\maven\tn.esprit\pidev_neoxam-ear\pom.properties
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:20:43.847
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ear\target\m2e-wtp\ear-resources\META-INF\maven\tn.esprit\pidev_neoxam-ear\pom.xml
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298244 2019-07-08 12:20:44.167
+!MESSAGE Full publish failed for module pidev_neoxam-ejb
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:20:44.167
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ejb\target\classes\META-INF\maven\tn.esprit\pidev_neoxam-ejb\pom.properties
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:20:44.167
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ejb\target\classes\META-INF\maven\tn.esprit\pidev_neoxam-ejb\pom.xml
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:20:44.167
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ejb\target\classes\META-INF\MANIFEST.MF
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 0 2019-07-08 12:20:44.234
+!MESSAGE The server "WildFly  9.x" requires a JDK to run properly. The VM used to launch this server is not recognized as a valid JDK. C:\Program Files\Java\jre1.8.0_60 
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 16842760 2019-07-08 12:20:45.525
+!MESSAGE Server Starting
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 16842784 2019-07-08 12:28:13.555
+!MESSAGE 
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 16973826 2019-07-08 12:28:15.780
+!MESSAGE The server was shutdown forcefully. All processes were terminated.
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298244 2019-07-08 12:28:15.817
+!MESSAGE Full publish failed for module pidev_neoxam-ear
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:28:15.818
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ear\target\m2e-wtp\ear-resources\META-INF\MANIFEST.MF
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:28:15.818
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ear\target\m2e-wtp\ear-resources\META-INF\application.xml
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:28:15.818
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ear\target\m2e-wtp\ear-resources\META-INF\maven\tn.esprit\pidev_neoxam-ear\pom.properties
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:28:15.818
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ear\target\m2e-wtp\ear-resources\META-INF\maven\tn.esprit\pidev_neoxam-ear\pom.xml
+
+!ENTRY org.jboss.ide.eclipse.as.core 4 1644298244 2019-07-08 12:28:16.241
+!MESSAGE Full publish failed for module pidev_neoxam-ejb
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:28:16.241
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ejb\target\classes\META-INF\maven\tn.esprit\pidev_neoxam-ejb\pom.properties
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:28:16.241
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ejb\target\classes\META-INF\maven\tn.esprit\pidev_neoxam-ejb\pom.xml
+!SUBENTRY 1 org.jboss.ide.eclipse.as.wtp.core 4 1644298251 2019-07-08 12:28:16.241
+!MESSAGE Error reading file D:\jee\neoxam\pidev_neoxam-ejb\target\classes\META-INF\MANIFEST.MF
+
+!ENTRY org.jboss.ide.eclipse.as.core 1 0 2019-07-08 12:28:16.250
+!MESSAGE Module pidev_neoxam-web on WildFly  9.x not yet fully deployed. Waiting...
+
+!ENTRY org.jboss.ide.eclipse.as.core 2 0 2019-07-08 12:28:36.273
+!MESSAGE Module pidev_neoxam-web on WildFly  9.x still not ready to be shown in browser. Aborting delay.
