@@ -5,7 +5,6 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import tn.esprit.entities.Candidat;
-import tn.esprit.entities.Skill;
 
 
 @Remote

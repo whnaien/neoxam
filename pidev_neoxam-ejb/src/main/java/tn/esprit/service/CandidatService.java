@@ -25,7 +25,6 @@ import com.pff.PSTMessage;
 
 import tn.esprit.dao.impl.CandidatCrud;
 import tn.esprit.entities.Candidat;
-import tn.esprit.entities.Skill;
 import tn.esprit.service.inter.IcandidatServiceLocal;
 import tn.esprit.service.inter.IcandidatServiceRemote;
 

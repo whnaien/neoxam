@@ -3,7 +3,6 @@ package tn.esprit.webservice;
 
 
 
-
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -15,35 +14,34 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 
-import tn.esprit.entities.Skill;
-import tn.esprit.service.SkillService;
+import tn.esprit.entities.Project;
+import tn.esprit.service.ProjectService;
 
 
 
 
-@Path("skill")
+@Path("project")
 @Stateless
-public class SkillWebService  {
+public class ProjectWebService  {
 	
 
 		EntityManager em;
 		@EJB
-		SkillService skillService;
+		ProjectService projectService;
 		
 	@POST
     @Consumes(MediaType.APPLICATION_JSON)
 
-	public Response addSkill(Skill skill,@QueryParam ("email")String email) 
+	public Response addProject(Project project) 
 	{
 		
 		try {
-			skillService.addSkills(skill,email);
+			projectService.addProject(project);
 			return Response.status(Status.CREATED).build();
 			
 		} catch (Exception e) {
@@ -54,10 +52,10 @@ public class SkillWebService  {
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateSkill( Skill skill)
+	public Response updateProject( Project project)
 	{
 		try {
-			skillService.updateSkill(skill);
+			projectService.updateProject(project);
 			return  Response.status(Status.OK).build();
 
 		} catch (Exception e) {
@@ -69,11 +67,11 @@ public class SkillWebService  {
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-		public Response getAllSkill(@PathParam(value="id")int id) {
+		public Response getAllProject(@PathParam(value="id")int id) {
 		if (id == 0)
-		return  Response.status(Status.OK).entity(skillService.findAllSkills()).build();
+		return  Response.status(Status.OK).entity(projectService.findAllProjects()).build();
 		else
-		return  Response.status(Status.OK).entity(skillService.findSkillById(id)).build();
+		return  Response.status(Status.OK).entity(projectService.findProjectById(id)).build();
 
 		
 		}
@@ -83,7 +81,7 @@ public class SkillWebService  {
 	public Response DeleteCoach(@PathParam(value="id")int id)
 	{
 		try {
-			skillService.removeSkill(id);
+			projectService.removeProject(id);
 			return  Response.status(Status.OK).build();
 
 		} catch (Exception e) {

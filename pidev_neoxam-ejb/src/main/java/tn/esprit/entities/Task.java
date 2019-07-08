@@ -31,7 +31,8 @@ public class Task implements Serializable {
 	@JoinColumn(name="FK_PROJECT_ID")
 	Project project;
 	
-	@ManyToOne (fetch = FetchType.EAGER)
+	@ManyToOne (fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name="FK_EMP_ID")
 	Employee employee;
 	
@@ -81,5 +82,18 @@ public class Task implements Serializable {
 	public void setPriority(Priority priority) {
 		this.priority = priority;
 	}
+	public Project getProject() {
+		return project;
+	}
+	public void setProject(Project project) {
+		this.project = project;
+	}
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
    
 }
