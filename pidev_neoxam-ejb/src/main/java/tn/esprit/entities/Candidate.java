@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 
@@ -17,7 +18,7 @@ public class Candidate extends User implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(mappedBy = "candidateResult")
+	@OneToMany(mappedBy = "candidateResult" , fetch = FetchType.LAZY)
 	private List<OnlineTestResult> onlineTestResults;
 	
 

@@ -2,16 +2,20 @@ package tn.esprit.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity()
 @Table(name = "OnlineTest")
@@ -37,9 +41,12 @@ public class OnlineTest implements Serializable {
 	
 	
 	
-	@OneToMany(mappedBy = "onlineTestResult")
+	@OneToMany(mappedBy = "onlineTestResult", fetch = FetchType.EAGER)
 	private List<OnlineTestResult> onlineTestResults;
 
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="T_TO_TQ", joinColumns={@JoinColumn(name="OnlineTest_id")}, inverseJoinColumns={@JoinColumn(name="daoQuestionId")})
+	private List<DaoQuestion> daoQuestions; 
 
 
 	public OnlineTest() {
@@ -143,6 +150,19 @@ public class OnlineTest implements Serializable {
 
 	public void setOnlineTestResults(List<OnlineTestResult> onlineTestResults) {
 		this.onlineTestResults = onlineTestResults;
+	}
+    
+	
+
+
+	public List<DaoQuestion> getDaoQuestions() {
+		return daoQuestions;
+	}
+
+
+
+	public void setDaoQuestions(List<DaoQuestion> daoQuestions) {
+		this.daoQuestions = daoQuestions;
 	}
 
 

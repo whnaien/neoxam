@@ -1,4 +1,4 @@
-package tn.esprit.dao;
+package tn.esprit.dao.inter;
 
 
 import java.util.List;
@@ -11,13 +11,10 @@ import tn.esprit.entities.OnlineTest;
 public interface OnlineTestRemoteDao {
 	
 	public int ajouterOnlineTest(OnlineTest onlineTest);
-	//public void affecterOnlineTestACandidat(int onlineTestId, int candidatId);
-	//public String getOnlineTestById(int onlineTestId);
-	//public long getNombreOnlineTestJPQL();
-	//public List<String> getAllOnlineTestTypesJPQL();
 	public String deleteOnlineTestById (int empId);
 	public List<OnlineTest> getAllOnlineTestJPQL ();
-	public void updateOnlineTest (OnlineTest e);
+	public boolean updateOnlineTest (int onlineTestId, OnlineTest e);
+	public OnlineTest getOnlineTestById (int onlineTestId);
 	
 
 }

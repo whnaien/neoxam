@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import tn.esprit.dao.EmployeDao;
+import tn.esprit.dao.inter.EmployeDao;
 import tn.esprit.entities.Employee;
 import tn.esprit.entities.User;
 

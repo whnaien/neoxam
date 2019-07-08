@@ -6,13 +6,13 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import tn.esprit.dao.OnlineTestLocalDao;
-import tn.esprit.dao.OnlineTestRemoteDao;
+import tn.esprit.dao.inter.OnlineTestLocalDao;
+import tn.esprit.dao.inter.OnlineTestRemoteDao;
 import tn.esprit.entities.OnlineTest;
 
 @Stateless
 public class OnlineTestDaoImp implements OnlineTestRemoteDao, OnlineTestLocalDao {
-	
+
 	@PersistenceContext(unitName = "pidev")
 	EntityManager em;
 
@@ -26,29 +26,39 @@ public class OnlineTestDaoImp implements OnlineTestRemoteDao, OnlineTestLocalDao
 	public String deleteOnlineTestById(int onlineTestId) {
 		OnlineTest e = em.find(OnlineTest.class, onlineTestId);
 		em.remove(em.contains(e) ? e : em.merge(e));
-		
-		
+
 		return "onlineTest deleted" + onlineTestId;
 	}
 
 	@Override
 	public List<OnlineTest> getAllOnlineTestJPQL() {
-		return em
-				.createQuery("SELECT e FROM OnlineTest e ", OnlineTest.class).getResultList();
+		return em.createQuery("SELECT e FROM OnlineTest e ", OnlineTest.class).getResultList();
 	}
 
 	@Override
-	public void updateOnlineTest(OnlineTest e) {
-		OnlineTest emp = em.find(OnlineTest.class, e.getIdTestOnline()); 
-		emp.setIsActif(e.getIsActif());
-		
-		
+	public boolean updateOnlineTest(int onlineTestId, OnlineTest e) {
+
+		if (e != null) {
+			OnlineTest ot = em.find(OnlineTest.class, onlineTestId);
+			ot.setOnlineTestaddressURL(e.getOnlineTestaddressURL());
+			ot.setOnlineTestdescription(e.getOnlineTestdescription());
+			ot.setOnlineTestDuration(e.getOnlineTestDuration());
+			ot.setOnlineTestType(e.getOnlineTestType());
+			ot.setIsActif(e.getIsActif());
+			if (e.getDaoQuestions() != null) {
+				ot.setDaoQuestions(e.getDaoQuestions());
+			}
+			em.persist(ot);
+			return true;
+		}
+
+		return false;
 	}
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public OnlineTest getOnlineTestById(int onlineTestId) {
+		// TODO Auto-generated method stub
+		return em.find(OnlineTest.class, onlineTestId);
+	}
 
 }

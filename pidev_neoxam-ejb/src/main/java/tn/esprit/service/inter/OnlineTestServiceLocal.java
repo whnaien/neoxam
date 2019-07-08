@@ -1,4 +1,4 @@
-package tn.esprit.service;
+package tn.esprit.service.inter;
 
 import javax.ejb.Local;
 
