@@ -14,6 +14,7 @@ import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.mail.MessagingException;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 
@@ -28,6 +29,7 @@ import tn.esprit.entities.Question;
 import tn.esprit.service.inter.OnlineTestResultServiceRemote;
 import tn.esprit.service.inter.OnlineTestServiceLocal;
 import tn.esprit.service.inter.OnlineTestServiceRemote;
+import tn.esprit.utilities.SendMailConfirmation;
 
 @Stateless
 public class OnlineTestServiceImp implements OnlineTestServiceRemote, OnlineTestServiceLocal {
@@ -183,27 +185,28 @@ public class OnlineTestServiceImp implements OnlineTestServiceRemote, OnlineTest
 		return false;
 
 	}
-	
+
 	/**
 	 * The following service is used to get the number of correct answers
 	 * 
-	 * @param sourceCode      sourceCode
-	 * @throws ClassNotFoundException 
-	 * @throws IOException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
-	 * @throws SecurityException 
-	 * @throws NoSuchMethodException 
-	 * @throws InvocationTargetException 
-	 * @throws IllegalArgumentException 
-	 *  
+	 * @param sourceCode sourceCode
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 * @throws SecurityException
+	 * @throws NoSuchMethodException
+	 * @throws InvocationTargetException
+	 * @throws IllegalArgumentException
+	 * 
 	 */
 
 	@Override
-	public String javaCompilerExecution(String reponse) throws ClassNotFoundException, IOException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException {
-	
-		String source = "test; public class Test { "
-				+ "  public String  testCal() {"+reponse+" } }";
+	public String javaCompilerExecution(String reponse)
+			throws ClassNotFoundException, IOException, InstantiationException, IllegalAccessException,
+			NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException {
+
+		String source = "package test; public class Test { " + "  public String  testCal() {" + reponse + " } }";
 
 		// Save source in .java file.
 		File root = new File("/java"); // On Windows running on C:\, this is C:\java.
@@ -219,13 +222,23 @@ public class OnlineTestServiceImp implements OnlineTestServiceRemote, OnlineTest
 		// Load and instantiate compiled class.
 		URLClassLoader classLoader = URLClassLoader.newInstance(new URL[] { root.toURI().toURL() });
 		Class<?> cls = Class.forName("test.Test", true, classLoader); // Should print "hello".
-		 // Should print "world".
-		Method sumInstanceMethod = cls.getMethod("testCal",null);
-		 
+		// Should print "world".
+		Method sumInstanceMethod = cls.getMethod("testCal", null);
+
 		Object operationsInstance = cls.newInstance();
-	    String result = (String)sumInstanceMethod.invoke(operationsInstance);
-	    return result;
-		
+		String result = (String) sumInstanceMethod.invoke(operationsInstance);
+		return result;
+
+	}
+
+	@Override
+	public boolean sendAnEmailToCandidate(String email, String body) throws MessagingException {
+
+		if (SendMailConfirmation.SendMailScore(email, body))
+
+			return true;
+		return false;
+
 	}
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.mail.MessagingException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -15,6 +16,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -37,7 +39,22 @@ public class OnlineTestResource {
 	
 	
 	@POST
-	@Path("/sourceCode/")
+	@Path("/SendScore")
+	@Produces("text/plain")
+	@Consumes(MediaType.TEXT_PLAIN)
+	public Response sendOnlineTestScore ( @QueryParam (value="email") String email, String body) throws MessagingException  {
+		
+		if (ots.sendAnEmailToCandidate(email,body ))
+		return Response.status(Status.OK).entity("email sent").build();
+		return Response.status(Status.NOT_FOUND).entity("email issue").build();
+		    
+		
+	}
+	
+	
+	
+	@POST
+	@Path("/sourceCode")
 	@Produces("text/plain")
 	@Consumes(MediaType.TEXT_PLAIN)
 	public Response compileExecuteCode (String sourceCode) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException {

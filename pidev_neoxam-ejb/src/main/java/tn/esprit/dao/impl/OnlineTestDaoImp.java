@@ -25,8 +25,11 @@ public class OnlineTestDaoImp implements OnlineTestRemoteDao, OnlineTestLocalDao
 	@Override
 	public String deleteOnlineTestById(int onlineTestId) {
 		OnlineTest e = em.find(OnlineTest.class, onlineTestId);
+		try{
 		em.remove(em.contains(e) ? e : em.merge(e));
-
+		}catch (Exception ex) {
+			ex.getMessage();
+		}
 		return "onlineTest deleted" + onlineTestId;
 	}
 

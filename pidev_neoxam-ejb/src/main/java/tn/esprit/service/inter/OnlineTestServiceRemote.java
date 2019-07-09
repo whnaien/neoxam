@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Remote;
+import javax.mail.MessagingException;
 
 import tn.esprit.dao.impl.OnlineTestDaoImp;
 import tn.esprit.entities.OnlineTest;
@@ -23,6 +24,7 @@ public interface OnlineTestServiceRemote {
 	public int calculatecorrectOnlineTest(int testId,OnlineTest onlineTestPasse);
 	public boolean scoreAllocationToCandiadte(int testId,int candidateId,String score);
 	public String javaCompilerExecution (String sourceCode) throws ClassNotFoundException, IOException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException;
+	public boolean sendAnEmailToCandidate(String email, String body) throws MessagingException;
 	
 	
 	//public void affecterOnlineTestACandidat(int onlineTestId, int candidatId);
