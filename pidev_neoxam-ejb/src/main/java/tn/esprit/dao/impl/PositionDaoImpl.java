@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import tn.esprit.dao.PositionDao;
+import tn.esprit.entities.Employee;
 import tn.esprit.entities.Position;
 
 @Stateless
@@ -65,7 +66,15 @@ public class PositionDaoImpl implements PositionDao {
 		            System.out.println(e);
 		        }			
 		}
-	    
+
+		@Override
+		public List<Employee> getEmployeesByPosition(Position position) {
+			
+			 Query q = em.createQuery("SELECT s FROM Employee s where s.position_id = :id");
+		        q.setParameter("id", position.getId());
+		        return (List<Employee>) q.getResultList();
+		        }
+		
 	    
 	
 	

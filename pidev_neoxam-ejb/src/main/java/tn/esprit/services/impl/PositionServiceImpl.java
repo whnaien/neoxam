@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import tn.esprit.dao.impl.PositionDaoImpl;
+import tn.esprit.entities.Employee;
 import tn.esprit.entities.Position;
 import tn.esprit.services.PositionService;
 
@@ -52,6 +53,12 @@ public class PositionServiceImpl implements PositionService{
 		public void deletePosition(int id) throws Exception {
 			positionDaoImp.deletePosition(id);
 			
+		}
+
+		@Override
+		public List<Employee> getEmployeesByPosition(Position position) {
+			// TODO Auto-generated method stub
+			return positionDaoImp.getEmployeesByPosition(position);
 		}
 
 	}

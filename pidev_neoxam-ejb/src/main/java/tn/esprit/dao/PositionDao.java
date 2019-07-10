@@ -2,6 +2,7 @@ package tn.esprit.dao;
 
 import java.util.List;
 
+import tn.esprit.entities.Employee;
 import tn.esprit.entities.Position;
 
 public interface PositionDao {
@@ -15,5 +16,7 @@ public interface PositionDao {
 	public Position updatePosition(Position position) throws Exception;
 
 	public void deletePosition(int id) throws Exception;
+	
+	public List<Employee> getEmployeesByPosition(Position position);
 
 }

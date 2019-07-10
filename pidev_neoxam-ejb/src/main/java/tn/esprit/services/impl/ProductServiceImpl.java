@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 
 import tn.esprit.dao.impl.ProductDaoImpl;
 import tn.esprit.entities.Product;
+import tn.esprit.entities.Project;
 import tn.esprit.services.ProductService;
 
 @Stateless
@@ -52,6 +53,12 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		productDaoImp.deleteProduct(id);
 		
+	}
+
+	@Override
+	public Project assignProjectToProduct (int product_id, Project project) {
+		// TODO Auto-generated method stub
+		return productDaoImp.assignProjectToProduct(product_id,project);
 	}
 	
 	

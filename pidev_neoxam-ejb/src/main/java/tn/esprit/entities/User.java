@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -35,7 +36,7 @@ public class User implements Serializable {
 	private int id;
 	
 	
-	private int cin;
+	private String cin;
 	
 	private String firstname;
 	private String lastname;
@@ -48,11 +49,15 @@ public class User implements Serializable {
 	private String login;
 	private String password;
 	
+
+	@ManyToOne
+	private Position position;
 	
-	public int getCin() {
+
+	public String getCin() {
 		return cin;
 	}
-	public void setCin(int cin) {
+	public void setCin(String cin) {
 		this.cin = cin;
 	}
 	public String getFirstname() {
@@ -120,6 +125,12 @@ public class User implements Serializable {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Position getPosition() {
+		return position;
+	}
+	public void setPosition(Position position) {
+		this.position = position;
 	}
 
 	

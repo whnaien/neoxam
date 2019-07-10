@@ -3,7 +3,6 @@ package tn.esprit.dao;
 import java.util.List;
 
 import tn.esprit.entities.Employee;
-import tn.esprit.entities.Project;
 import tn.esprit.entities.User;
 
 //@Local
@@ -21,14 +20,14 @@ public interface EmployeDao {
 
 	public void deleteUser(int id) throws Exception;
 	
-	public List<Employee> getEmployeesByResponsable(Employee responsable);
+	public List<Employee> getEmployeesByResponsable(int responsable_id);
 
-	public List<Employee> getEmployeesByProject(Project project);
+	public List<Employee> getEmployeesByProject(int project_id);
 	
-	public void assignProjectToEmployee(Employee employee, int projectId);
+	public Employee assignProjectToEmployee(Employee employee, int projectId);
 	
-	public void assignResponsableToEmployee(Employee employee, int responsable_id);
+	public Employee assignResponsableToEmployee(Employee employee, int responsable_id);
 	
-	public void assignPositionToEmployee(Employee employee, int position_id);
+	public User assignPositionToUser(User user, int position_id);
 
 }

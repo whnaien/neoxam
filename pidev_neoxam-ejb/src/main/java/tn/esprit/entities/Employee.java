@@ -1,11 +1,12 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
@@ -24,14 +25,12 @@ public class Employee extends User implements Serializable {
 	@Lob
 	private byte[] imageUri;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Employee responsable;
 	
 	
 	@ManyToOne
-	private Position position;
-
+	private Employee responsable;
 	
+
 	private String job;
 	
 	
@@ -95,14 +94,6 @@ public class Employee extends User implements Serializable {
 		this.imageUri = imageUri;
 	}
 
-	public Position getPosition() {
-		return position;
-	}
-
-	public void setPosition(Position position) {
-		this.position = position;
-	}
-
 	public Project getProject() {
 		return project;
 	}
@@ -111,6 +102,8 @@ public class Employee extends User implements Serializable {
 		this.project = project;
 	}
 
+
+	
 	
 	
 }

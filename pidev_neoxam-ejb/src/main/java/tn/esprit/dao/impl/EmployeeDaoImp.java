@@ -27,9 +27,9 @@ public class EmployeeDaoImp implements EmployeDao {
 		return (List<Employee>) q.getResultList();
 	}
 
-	public User singleUser(int cin) {
-		Query q = em.createQuery("SELECT s FROM Employee s where s.cin = :cin");
-		q.setParameter("cin", cin);
+	public User singleUser(int id) {
+		Query q = em.createQuery("SELECT s FROM Employee s where s.id = :id");
+		q.setParameter("id", id);
 		return (User) q.getSingleResult();
 	}
 
@@ -74,10 +74,10 @@ public class EmployeeDaoImp implements EmployeDao {
 	}
 
 	@Override
-	public List<Employee> getEmployeesByResponsable(Employee responsable) {
+	public List<Employee> getEmployeesByResponsable(int responsable_id) {
 
 		Query q = em.createQuery("SELECT s FROM Employee s where s.responsable_id = :responsable_id");
-		q.setParameter("responsable_id", responsable.getId());
+		q.setParameter("responsable_id", responsable_id);
 		return (List<Employee>) q.getResultList();
 
 		// TODO Auto-generated method stub
@@ -85,29 +85,33 @@ public class EmployeeDaoImp implements EmployeDao {
 	}
 
 	@Override
-	public List<Employee> getEmployeesByProject(Project project) {
+	public List<Employee> getEmployeesByProject(int project_id) {
 
 		Query q = em.createQuery("SELECT s FROM Employee s where s.project_id = :project_id");
-		q.setParameter("project_id", project.getId());
+		q.setParameter("project_id", project_id);
 		return (List<Employee>) q.getResultList();
 
 	}
 
 	@Override
-	public void assignProjectToEmployee(Employee employee, int projectId) {
+	public Employee assignProjectToEmployee(Employee employee, int projectId) {
 		Project project = em.find(Project.class, projectId);
 		employee.setProject(project);
 		em.merge(employee);
 		em.flush();
+		return employee;
 
 	}
 
 	@Override
-	public void assignResponsableToEmployee(Employee employee, int responsable_id) {
+	public Employee assignResponsableToEmployee(Employee employee, int responsable_id) {
 		Employee responsable= em.find(Employee.class, responsable_id);
 		employee.setResponsable(responsable);
 		em.merge(employee);
 		em.flush();
+		
+		return employee;
+
 
 	}
 
@@ -120,12 +124,13 @@ public class EmployeeDaoImp implements EmployeDao {
 	}
 
 	@Override
-	public void assignPositionToEmployee(Employee employee, int position_id) {
+	public User assignPositionToUser(User employee, int position_id) {
 		
 		Position position= em.find(Position.class, position_id);
 		employee.setPosition(position);
 		em.merge(employee);
 		em.flush();
+		return employee;
 
 		
 	}

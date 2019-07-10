@@ -1,11 +1,13 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +28,9 @@ public class Product implements Serializable {
 	
 	
 	
+//	@OneToMany
+//	private Set<Project> projects;
+//	
 	
 	public int getId() {
 		return id;
@@ -51,6 +56,12 @@ public class Product implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+//	public Set<Project> getProjects() {
+//		return projects;
+//	}
+//	public void setProjects(Set<Project> projects) {
+//		this.projects = projects;
+//	}
 	
 
 	

@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,21 +22,23 @@ public class Project implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String id;
+	private int id;
 	private String nameProject;
 	private String description;
 	
 	@ManyToOne
 	private Product product;
 	
+	
+	
 
     @Enumerated(EnumType.STRING)
 	private Priority priority;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getNameProject() {
@@ -53,17 +54,17 @@ public class Project implements Serializable {
 		this.description = description;
 	}
 	
-	public Product getProduct() {
-		return product;
-	}
-	public void setProduct(Product product) {
-		this.product = product;
-	}
 	public Priority getPriority() {
 		return priority;
 	}
 	public void setPriority(Priority priority) {
 		this.priority = priority;
+	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
 	

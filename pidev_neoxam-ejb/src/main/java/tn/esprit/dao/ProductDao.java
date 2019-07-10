@@ -3,6 +3,7 @@ package tn.esprit.dao;
 import java.util.List;
 
 import tn.esprit.entities.Product;
+import tn.esprit.entities.Project;
 
 public interface ProductDao {
 	
@@ -16,5 +17,6 @@ public interface ProductDao {
 
 	public void deleteProduct(int id) throws Exception;
 	
+	public Project assignProjectToProduct(int product_id, Project project);
 
 }

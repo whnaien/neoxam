@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import tn.esprit.entities.Employee;
 import tn.esprit.entities.Position;
 
 @Local
@@ -17,5 +18,7 @@ public interface PositionService {
 	public Position updatePosition(Position position) throws Exception;
 
 	public void deletePosition(int id) throws Exception;
+	
+	public List<Employee> getEmployeesByPosition(Position position);
 
 }

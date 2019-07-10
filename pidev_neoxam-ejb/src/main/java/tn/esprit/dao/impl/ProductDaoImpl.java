@@ -1,6 +1,8 @@
 package tn.esprit.dao.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -10,6 +12,7 @@ import javax.persistence.Query;
 
 import tn.esprit.dao.ProductDao;
 import tn.esprit.entities.Product;
+import tn.esprit.entities.Project;
 
 @Stateless
 @LocalBean
@@ -23,7 +26,8 @@ public class ProductDaoImpl  implements ProductDao {
 		public List<Product> allProducts() {
 			// TODO Auto-generated method stub
 			Query q = em.createQuery("SELECT s FROM Product s");
-	        return (List<Product>) q.getResultList();		}
+	        return (List<Product>) q.getResultList();	
+	        }
 
 		@Override
 		public Product singleProduct(int id) {
@@ -64,6 +68,17 @@ public class ProductDaoImpl  implements ProductDao {
 		        } catch (Exception e) {
 		            System.out.println(e);
 		        }			
+		}
+
+		@Override
+		public Project assignProjectToProduct(int product_id, Project project) {
+			
+			Product product= em.find(Product.class, product_id);
+			project.setProduct(product);
+			em.merge(project);
+			em.flush();
+			return project;
+			
 		}
 	    
 	    

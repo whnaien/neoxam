@@ -16,6 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import tn.esprit.entities.Product;
+import tn.esprit.entities.Project;
 import tn.esprit.services.impl.ProductServiceImpl;
 
 @Path("products")
@@ -30,6 +31,7 @@ public class ProductResource {
 
 	
 	@GET
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Product> getAllProducts() {
         return productServiceImpl.allProducts();
     }
@@ -64,4 +66,11 @@ public class ProductResource {
         return productServiceImpl.singleProduct(id);
     }
 
+    @PUT
+    @Path("assignprojecttoproduct/{sId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Project assignProjectToProduct(@PathParam("sId") int id, Project project) {
+        return productServiceImpl.assignProjectToProduct(id, project);
+    }
 }

@@ -5,12 +5,9 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import tn.esprit.dao.impl.EmployeeDaoImp;
 import tn.esprit.entities.Employee;
-import tn.esprit.entities.Project;
 import tn.esprit.entities.User;
 import tn.esprit.services.EmployeeService;
 
@@ -19,8 +16,9 @@ import tn.esprit.services.EmployeeService;
 public class EmployeeServiceImpl implements EmployeeService{
 	
 
-	@PersistenceContext(unitName = "pidev")
-	EntityManager em;
+	
+	
+	
 	
 	@EJB
 	EmployeeDaoImp employeeDaoImp;
@@ -57,26 +55,26 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public List<Employee> getEmployeesByResponsable(Employee responsable) {
-		return employeeDaoImp.getEmployeesByResponsable(responsable);
+	public List<Employee> getEmployeesByResponsable(int responsable_id) {
+		return employeeDaoImp.getEmployeesByResponsable(responsable_id);
 		
 	}
 
 	@Override
-	public List<Employee> getEmployeesByProject(Project project) {
+	public List<Employee> getEmployeesByProject(int project_id) {
 		// TODO Auto-generated method stub
-		return employeeDaoImp.getEmployeesByProject(project);
+		return employeeDaoImp.getEmployeesByProject(project_id);
 	}
 
 	@Override
-	public void assignProjectToEmployee(Employee employee, int projectId) {
-		employeeDaoImp.assignProjectToEmployee(employee, projectId);
+	public Employee assignProjectToEmployee(Employee employee, int projectId) {
+		return employeeDaoImp.assignProjectToEmployee(employee, projectId);
 		
 	}
 
 	@Override
-	public void assignResponsableToEmployee(Employee employee, int responsable_id) {
-		employeeDaoImp.assignResponsableToEmployee(employee, responsable_id);
+	public Employee assignResponsableToEmployee(Employee employee, int responsable_id) {
+		return employeeDaoImp.assignResponsableToEmployee(employee, responsable_id);
 		
 	}
 
@@ -84,6 +82,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public Employee searchForEmployee(String criteria) {
 		// TODO Auto-generated method stub
 		return employeeDaoImp.searchForEmployee(criteria);
+	}
+
+	@Override
+	public User assignPositionToUser(User employee, int position_id) {
+		// TODO Auto-generated method stub
+		return employeeDaoImp.assignPositionToUser(employee, position_id);
+		
 	}
 	
 	
