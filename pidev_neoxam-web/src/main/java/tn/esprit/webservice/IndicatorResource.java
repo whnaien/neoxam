@@ -1,0 +1,93 @@
+package tn.esprit.webservice;
+
+
+import javax.ejb.EJB;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
+
+import tn.esprit.entities.Indicator;
+import tn.esprit.service.IndicatorService;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.PathParam;
+
+
+@Path("indicator")
+@Stateless
+public class IndicatorResource {
+
+	@EJB
+	IndicatorService indicatorService;
+	EntityManager em;
+	
+	//get All indicators
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAll() {
+		return 
+				Response.ok(indicatorService.getAllIndicators()).build();
+	}
+	
+	//get indicator
+	@GET
+	@Path("{code}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getindicatorByCode(@PathParam(value="code") String code) {
+		if (code == "")
+			return  Response.status(Status.OK).entity(indicatorService.getAllIndicators()).build();
+			else
+			return  Response.status(Status.OK).entity(indicatorService.getIndicatorByCode(code)).build();
+	}
+
+	//add in indicator
+	@POST
+	@Path("{code}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Indicator addIndicator(Indicator ind, @PathParam(value="code") String code) 
+	{
+		return indicatorService.addIndicator(ind);
+		
+	}
+	
+	//delete an indicator
+	@DELETE
+	@Path("{code}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response deleteIndicator(@PathParam(value="code") String code) {
+			
+			try{
+				indicatorService.deleteIndicator(code);
+				return Response.status(Status.OK).entity(indicatorService.deleteIndicator(code)).build();
+			}
+			catch (Exception e) {
+				return Response.status(Status.NOT_FOUND).build();
+			}
+			
+						
+	}
+	
+	//update an indicator
+	@PUT
+	 @Path("/{code}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Indicator updateIndicator( Indicator indicator,@PathParam(value="code") String code)
+	{
+			indicator.setCode(code);
+			return indicatorService.updateIndicator(indicator);
+			
+	}
+}
