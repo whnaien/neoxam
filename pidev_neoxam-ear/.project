@@ -3,6 +3,8 @@
 	<name>pidev_neoxam-ear</name>
 	<comment></comment>
 	<projects>
+		<project>Neoxam</project>
+		<project>pidev_neoxam-ear</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

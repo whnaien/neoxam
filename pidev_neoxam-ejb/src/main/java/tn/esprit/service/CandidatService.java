@@ -171,6 +171,8 @@ public class CandidatService implements IcandidatServiceLocal,IcandidatServiceRe
             while (email != null) {
                 printDepth();
                 System.out.println("Email: "+email.getSubject());
+                System.out.println("Email: "+email.getEmailAddress());
+
                 email = (PSTMessage)folder.getNextChild();
             }
             depth--;

@@ -6,13 +6,12 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import tn.esprit.dao.IRiskCrud;
-import tn.esprit.entities.Candidat;
+
 import tn.esprit.entities.Employee;
-import tn.esprit.entities.Project;
+
 import tn.esprit.entities.Risk;
 
 @Stateless

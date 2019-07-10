@@ -24,7 +24,7 @@ public class IndicatorService implements IIndicatorServiceLocal, IIndicatorServi
 	@Override
 	public Indicator addIndicator(Indicator indicators) {
 		return indicatorCrud.addIndicator(indicators);	
-	}
+			}
 
 	@Override
 	public Indicator updateIndicator(Indicator indicators) {
@@ -32,8 +32,8 @@ public class IndicatorService implements IIndicatorServiceLocal, IIndicatorServi
 	}
 
 	@Override
-	public String deleteIndicator(String code) {
-		return indicatorCrud.deleteIndicator(code);
+	public void deleteIndicator(String code) {
+		 indicatorCrud.deleteIndicator(code);
 	}
 
 	@Override

@@ -5,9 +5,6 @@ import java.util.List;
 import tn.esprit.entities.Project;
 
 
-
-
-
 public interface IProjectCrud {
 	public void addProject(Project project);
 	public void removeProject(int id); 

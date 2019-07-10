@@ -33,6 +33,7 @@ public class Candidat extends User implements Serializable {
 	@JsonIgnore
 	private Set<Skill> skills = new HashSet<Skill>();
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy="candidat")
+	@JsonIgnore
 	private Set<ProfessionalExp> professionalExps = new HashSet<ProfessionalExp>();
 	
 

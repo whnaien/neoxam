@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 import tn.esprit.dao.IIndicatorCrud;
 import tn.esprit.entities.Indicator;
 
+
 @Stateless
 @LocalBean
 public class IndicatorCrud implements IIndicatorCrud{
@@ -18,15 +19,13 @@ public class IndicatorCrud implements IIndicatorCrud{
 	EntityManager em;
 	
 	@Override
-	public Indicator addIndicator(Indicator indicators) {
-		em.persist(indicators);
+	public Indicator addIndicator(Indicator indicator) {
+		em.persist(indicator);
 		em.flush();
-		return indicators;	
-	}
-	/*
-	 * em.persist(onlineTest);
-		return onlineTest.getIdTestOnline();
-	 */
+		return indicator;	
+		
+		}
+	
 
 	@Override
 	public Indicator updateIndicator(Indicator indicators) {
@@ -37,23 +36,21 @@ public class IndicatorCrud implements IIndicatorCrud{
 	}
 
 	@Override
-	public String deleteIndicator(String code) {
-
-		
-		//em.remove(em.find(Indicator.class, code));
-		Indicator e = em.find(Indicator.class, code);
-		em.remove(em.contains(e) ? e : em.merge(e));
-		return "indicator deleted" +code;
+	public void deleteIndicator(String code) {
+		TypedQuery<Indicator> query = 
+				em.createQuery("SELECT c FROM Indicator c WHERE code=:value", Indicator.class); 
+				query.setParameter("value", code); 
+				Indicator ind=  query.getSingleResult();
+		em.remove(ind);
 				
 	}
-
+	
 	@Override
 	public List<Indicator> getAllIndicators() {
 		List<Indicator> indicators = em.createQuery("from Indicator", Indicator.class).getResultList();
 		return indicators;
 	}
 	
-
 	@Override
 	public Indicator getIndicatorByCode(String code) {
 		return em.find(Indicator.class, code);

@@ -52,14 +52,13 @@ public class IndicatorResource {
 	}
 
 	//add in indicator
+	
 	@POST
-	@Path("{code}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Indicator addIndicator(Indicator ind, @PathParam(value="code") String code) 
+	public Indicator addIndicator(Indicator ind) 
 	{
 		return indicatorService.addIndicator(ind);
-		
 	}
 	
 	//delete an indicator
@@ -70,15 +69,13 @@ public class IndicatorResource {
 			
 			try{
 				indicatorService.deleteIndicator(code);
-				return Response.status(Status.OK).entity(indicatorService.deleteIndicator(code)).build();
+				return Response.status(Status.OK).build();
 			}
 			catch (Exception e) {
 				return Response.status(Status.NOT_FOUND).build();
-			}
-			
-						
+			}						
 	}
-	
+
 	//update an indicator
 	@PUT
 	 @Path("/{code}")

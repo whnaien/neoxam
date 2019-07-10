@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
@@ -30,7 +31,7 @@ public class Employee extends User implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Employee responsable;
 	
-	@OneToMany(fetch = FetchType.EAGER,mappedBy="employee")
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="employee")
 	private Set<Task> tasks = new HashSet<Task>();
 	
 	private String job;
@@ -91,5 +92,16 @@ public class Employee extends User implements Serializable {
 		this.imageUri = imageUri;
 	}
 
-	
+
+	 @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy="employee")
+	private Set<Risk> risks = new HashSet<Risk>();
+
+	public Set<Risk> getRisks() {
+		return risks;
+	}
+
+	public void setRisks(Set<Risk> risks) {
+		this.risks = risks;
+	}
+
 }

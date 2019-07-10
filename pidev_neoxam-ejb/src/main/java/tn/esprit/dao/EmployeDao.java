@@ -7,7 +7,6 @@ import javax.ejb.Local;
 import tn.esprit.entities.Employee;
 import tn.esprit.entities.User;
 
-
 @Local
 public interface EmployeDao {
 	public int addEmployee(Employee employe);

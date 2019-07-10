@@ -61,7 +61,7 @@ public class Risk implements Serializable{
 		this.typeRisk = typeRisk;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy="risk")
+	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy="risk")
 	private Set<Indicator> indicators =  new HashSet<Indicator>();
 	
   

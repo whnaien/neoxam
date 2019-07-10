@@ -49,7 +49,7 @@ public class Indicator implements Serializable {
 	}
 
 
-     @ManyToOne (fetch = FetchType.EAGER)
+     @ManyToOne (fetch = FetchType.LAZY)
      @JoinColumn(name="FK_Risk_ref")
      Risk risk;
 

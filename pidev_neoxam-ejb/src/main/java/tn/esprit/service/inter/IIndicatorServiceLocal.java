@@ -8,7 +8,7 @@ import tn.esprit.entities.Indicator;
 public interface IIndicatorServiceLocal {
 	public Indicator addIndicator(Indicator indicators );
 	public Indicator updateIndicator(Indicator indicators);
-	public String deleteIndicator(String code);
+	public void deleteIndicator(String code);
 	public List<Indicator> getAllIndicators();
 	public Indicator getIndicatorByCode(String code);
 	
