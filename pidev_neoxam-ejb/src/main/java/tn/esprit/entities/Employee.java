@@ -1,15 +1,16 @@
 package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@DiscriminatorValue("employee")
+@PrimaryKeyJoinColumn(name = "id")
 public class Employee extends User implements Serializable {
 
 	/**
@@ -24,10 +25,18 @@ public class Employee extends User implements Serializable {
 	@Lob
 	private byte[] imageUri;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	
+	
+	@ManyToOne
 	private Employee responsable;
+	
 
 	private String job;
+	
+	
+	@ManyToOne
+	private Project project;
+	
 
 	public int getActive() {
 		return active;
@@ -85,5 +94,16 @@ public class Employee extends User implements Serializable {
 		this.imageUri = imageUri;
 	}
 
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+
+	
+	
 	
 }

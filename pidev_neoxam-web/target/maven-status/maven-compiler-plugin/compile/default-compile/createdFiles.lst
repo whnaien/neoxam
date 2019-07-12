@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 tn\esprit\webservice\OnlineTestResource.class
 tn\esprit\webservice\EmployeeResource.class
 tn\esprit\webservice\OnlineTestResultResource.class
+=======
+tn\esprit\webservice\PositionResource.class
+tn\esprit\webservice\EmployeeResource.class
+tn\esprit\webservice\ProductResource.class
+>>>>>>> refs/remotes/origin/Human_resource
 tn\esprit\webservice\RestActivator.class
