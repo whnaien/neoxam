@@ -2,6 +2,9 @@ package tn.esprit.webservice;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -17,6 +20,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -67,13 +72,15 @@ public class OnlineTestResource {
 		
 	}
 	
+	
 
 	@POST
 	@Path("/score/{onlineTestId}/{candidatId}")
 	@Produces("text/plain")
 	@Consumes(MediaType.TEXT_PLAIN)
-	public Response getScoreByTestById (@PathParam (value="onlineTestId") int onlineTestId,@PathParam (value="candidatId") int candidatId, String score) {
+	public Response getScoreByTestById (@PathParam (value="onlineTestId") int onlineTestId,@PathParam (value="candidatId") int candidatId, String score) throws URISyntaxException {
 		
+		URI u = new URI(HttpHeaders.LOCATION);
 		if (ots.scoreAllocationToCandiadte(onlineTestId,candidatId,score) == true)
 		return Response.status(Status.OK).entity(score).build();
 		return Response.status(Status.NOT_FOUND).build();
